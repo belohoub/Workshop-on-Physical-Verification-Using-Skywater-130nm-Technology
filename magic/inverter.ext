@@ -1,0 +1,56 @@
+timestamp 1665427272
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 2200000 3050000 1700000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12200 125 125 47 47 29 5
+use sky130_fd_pr__nfet_01v8_385SSZ sky130_fd_pr__nfet_01v8_385SSZ_0 1 0 1013 0 1 96
+use sky130_fd_pr__pfet_01v8_72SH2U XM2 1 0 1003 0 1 903
+port "vss" 1 996 -472 1196 -272 m1
+port "out" 3 1542 500 1742 700 m1
+port "in" 2 322 468 522 668 m1
+port "vdd" 0 922 1320 1122 1520 m1
+node "vss" 2 752.304 996 -472 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 158252 3168 0 0 0 0 0 0 0 0 0 0
+node "out" 5 962.486 1542 500 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 118917 4318 0 0 0 0 0 0 0 0 0 0
+node "in" 6 1416 322 468 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 197844 6280 0 0 0 0 0 0 0 0 0 0
+node "vdd" 2 812.96 922 1320 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 191016 3360 0 0 0 0 0 0 0 0 0 0
+substrate "VSUBS" 0 0 -1073741817 -1073741817 space 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cap "vss" "out" 225.563
+cap "in" "vss" 739.555
+cap "vdd" "out" 153.568
+cap "in" "vdd" 555.84
+cap "in" "out" 681.146
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n173_n100#" "XM2/w_n311_n319#" 134.572
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n173_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n33_122#" 116.968
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n275_n274#" "XM2/w_n311_n319#" 71.28
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n275_n274#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n33_122#" 81.2348
+cap "XM2/a_n173_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n173_n100#" 53.3219
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n78_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n173_n100#" 274.474
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n78_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n275_n274#" 392.799
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n275_n274#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n173_n100#" 129.357
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n33_122#" "XM2/w_n311_n319#" 49.7628
+cap "XM2/a_n173_n100#" "XM2/w_n311_n319#" 1.33227e-14
+cap "XM2/a_n173_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n33_122#" 21.7241
+cap "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n78_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n33_122#" 67.0269
+cap "XM2/a_n173_n100#" "XM2/w_n311_n319#" 234.404
+cap "XM2/a_n173_n100#" "XM2/a_114_n100#" 188.38
+cap "XM2/a_n173_n100#" "XM2/a_n33_131#" 77.0894
+cap "XM2/w_n311_n319#" "XM2/a_n33_131#" 54.0108
+cap "XM2/w_n311_n319#" "XM2/a_114_n100#" -7.99361e-15
+cap "XM2/a_n33_131#" "XM2/a_114_n100#" -1.74757
+merge "XM2/VSUBS" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n275_n274#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n275_n274#" "VSUBS"
+merge "XM2/a_18_n100#" "XM2/a_n173_n100#" -166.802 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -720 -212 0 0 0 0 0 0 0 0 0 0
+merge "XM2/a_n173_n100#" "vdd"
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_114_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n78_n100#" -234.819 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2668 -300 0 0 0 0 0 0 0 0 0 0
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n78_n100#" "vss"
+merge "XM2/a_63_n197#" "XM2/a_n129_n197#" -264.218 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -14220 -1184 0 0 0 0 0 0 0 0 0 0
+merge "XM2/a_n129_n197#" "XM2/a_n33_131#"
+merge "XM2/a_n33_131#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_63_n188#"
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_63_n188#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n129_n188#"
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n129_n188#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n33_122#"
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n33_122#" "in"
+merge "XM2/a_n78_n100#" "XM2/a_114_n100#" -412.425 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -7724 -772 0 0 0 0 0 0 0 0 0 0
+merge "XM2/a_114_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_18_n100#"
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_18_n100#" "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n173_n100#"
+merge "sky130_fd_pr__nfet_01v8_385SSZ_0/a_n173_n100#" "out"
