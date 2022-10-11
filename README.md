@@ -17,7 +17,8 @@ Extracting inverter into inverter.ext:
 ```
 
 ```bash
-$ netgen -batch lvs "../magic/inverter.spice inverter" "../conf/xschem/simulations/inverter.spice inverter"
+$ cd netgen
+$ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/inverter.spice inverter"
 ```
 
 ## Day 2
