@@ -2,22 +2,22 @@
 **.subckt inverter_tb out in
 *.opin out
 *.opin in
-
-x1 net1 in out 0 inverter
-V1 in 0 PWL(0ns 0v 20ns 0v 900ns 1.8v) dc 0v
-V2 net1 0 1.8v
-
+x1 net1 in out GND inverter
+V1 in GND PWL(0ns 0v 20n 0 500ns 1.8v)
+.save i(v1)
+V2 net1 GND 1.8
+.save i(v2)
 **** begin user architecture code
 
 .lib /usr/share/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 
 
+.save v(in) v(out)
 .control
-tran 1ns 1us
+tran 1n 1u
 run
-plot v(in) v(out)
+plot V(in) V(out)
 .endc
-
 
 **** end user architecture code
 **.ends
@@ -38,6 +38,5 @@ XM2 out in vdd vdd sky130_fd_pr__pfet_01v8 L=0.18 W=3 nf=1 ad='int((nf+1)/2) * W
 + sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
-
-
+.GLOBAL GND
 .end

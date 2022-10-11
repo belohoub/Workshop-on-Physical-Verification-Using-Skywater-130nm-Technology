@@ -47,8 +47,8 @@ C {devices/iopin.sym} 30 -120 0 0 {name=p1 lab=vdd}
 C {devices/iopin.sym} 30 120 0 0 {name=p1 lab=vss}
 C {/usr/share/pdks/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8_lvt.sym} -20 50 0 0 {name=M1
 L=0.18
-W=3
-nf=3 
+W=4.5
+nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -63,7 +63,7 @@ C {/usr/share/pdks/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8_lvt.sym} -20 
 L=0.18
 W=3
 body=VDD
-nf=3
+nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
