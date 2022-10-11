@@ -62,7 +62,6 @@ spiceprefix=X
 C {/usr/share/pdks/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8_lvt.sym} -20 -50 0 0 {name=M2
 L=0.18
 W=3
-body=VDD
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 

@@ -1,0 +1,114 @@
+
+Circuit 1 cell sky130_fd_pr__pfet_01v8 and Circuit 2 cell sky130_fd_pr__pfet_01v8 are black boxes.
+Warning: Equate pins:  cell sky130_fd_pr__pfet_01v8 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell sky130_fd_pr__pfet_01v8 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: sky130_fd_pr__pfet_01v8         |Circuit 2: sky130_fd_pr__pfet_01v8         
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes sky130_fd_pr__pfet_01v8 and sky130_fd_pr__pfet_01v8 are equivalent.
+
+Circuit 1 cell sky130_fd_pr__nfet_01v8 and Circuit 2 cell sky130_fd_pr__nfet_01v8 are black boxes.
+Warning: Equate pins:  cell sky130_fd_pr__nfet_01v8 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell sky130_fd_pr__nfet_01v8 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: sky130_fd_pr__nfet_01v8         |Circuit 2: sky130_fd_pr__nfet_01v8         
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes sky130_fd_pr__nfet_01v8 and sky130_fd_pr__nfet_01v8 are equivalent.
+
+Class inverter (1):  Merged 4 parallel devices.
+Subcircuit summary:
+Circuit 1: inverter                        |Circuit 2: inverter                        
+-------------------------------------------|-------------------------------------------
+sky130_fd_pr__pfet_01v8 (3->1)             |sky130_fd_pr__pfet_01v8 (1)                
+sky130_fd_pr__nfet_01v8 (3->1)             |sky130_fd_pr__nfet_01v8 (1)                
+Number of devices: 2                       |Number of devices: 2                       
+Number of nets: 4                          |Number of nets: 4                          
+---------------------------------------------------------------------------------------
+Netlists match uniquely with property errors.
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+ M circuit1: 3   circuit2: 1   (delta=2, cutoff=0)
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property mult in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property sd in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property sb in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property sa in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property nrs in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property nrd in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property ps in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property pd in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property as in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property ad in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property nf in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property W in circuit2 has no matching property in circuit1
+sky130_fd_pr__nfet_01v8:3 vs. sky130_fd_pr__nfet_01v8:M1:
+Property L in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+ M circuit1: 3   circuit2: 1   (delta=2, cutoff=0)
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property mult in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property sd in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property sb in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property sa in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property nrs in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property nrd in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property ps in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property pd in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property as in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property ad in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property nf in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property W in circuit2 has no matching property in circuit1
+sky130_fd_pr__pfet_01v8:0 vs. sky130_fd_pr__pfet_01v8:M2:
+Property L in circuit2 has no matching property in circuit1
+
+Subcircuit pins:
+Circuit 1: inverter                        |Circuit 2: inverter                        
+-------------------------------------------|-------------------------------------------
+out                                        |out                                        
+in                                         |in                                         
+vss                                        |vss                                        
+vdd                                        |vdd                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes inverter and inverter are equivalent.
+
+Final result: Circuits match uniquely.
+Property errors were found.
+
+The following cells had property errors:
+ inverter
