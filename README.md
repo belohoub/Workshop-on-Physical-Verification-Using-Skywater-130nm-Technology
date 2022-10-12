@@ -62,6 +62,13 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
 % gds noduplicates true % ignore cell defiitions in gds what is already inthe memory
 ```
 
+  * Hands on:
+```tcl
+% gds read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds % read cells
+% lef read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef % read metzadata for gds data, do not owewrite existing cellsm by abstract views
+% readspice /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice % anotate cells by spice netlists (reorder pins)
+```
+    
 #### CIF input style (CIF/GDS)
 
 ```tcl
@@ -126,5 +133,91 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
 % flatten xor_test
 % load and2_2_alt
 % xor xor_test
+```
+
+### Hands on
+
+#### Challenge: create cell locally and compare it with theat one provided by vendor
+
+```tcl
+% cif istyle sky130(vendor)
+% gds read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+% lef read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef 
+% readspice /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+% load sky130_fd_sc_hd__and2_1
+% property
+{LEFsite unithd} {LEFclass CORE} {FIXED_BBOX 0 0 460 544} {LEFsymmetry X Y R90} {path 0.000 13.600 11.500 13.600 }
+% writeall
+%
+% port first
+1
+% port 1 name
+A
+% port 2 name
+B
+% port 3 name
+VGND
+% port 4 name
+VNB
+% port 5 name
+VPB
+% port 6 name
+VPWR
+% port 7 name
+X
+% port 1 use
+signal
+% port 1 class
+input
+% 
+% extract do local
+% extract all
+% ext2spice lvs
+% ext2spice
+exttospice finished.
+% gds write sky130_fd_sc_hd__and2_1
+   Generating output for cell sky130_fd_sc_hd__and2_1
+% quit
+```
+
+```bash
+$ ls
+sky130_fd_sc_hd__and2_1.ext  sky130_fd_sc_hd__and2_1.gds  sky130_fd_sc_hd__and2_1.spice  test.gds  test.mag
+$ less sky130_fd_sc_hd__and2_1.spice 
+$ mkdir ../netgen
+$ cd ../netgen/
+$ netgen -batch lvs "../magic/sky130_fd_sc_hd__and2_1.spice sky130_fd_sc_hd__and2_1" "/usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice sky130_fd_sc_hd__and2_1"
+...
+Final result: 
+Top level cell failed pin matching.
+
+Logging to file "comp.out" disabled
+LVS Done.
+$ less comp.out 
+
+...
+
+Subcircuit pins:
+Circuit 1: sky130_fd_sc_hd__and2_1         |Circuit 2: sky130_fd_sc_hd__and2_1         
+-------------------------------------------|-------------------------------------------
+A                                          |B **Mismatch**                             
+VGND                                       |A **Mismatch**                             
+X                                          |X                                          
+B                                          |VGND **Mismatch**                          
+VNB                                        |VPB **Mismatch**                           
+VPB                                        |VPWR **Mismatch**                          
+VPWR                                       |VNB **Mismatch**                           
+---------------------------------------------------------------------------------------
+Cell pin lists for sky130_fd_sc_hd__and2_1 and sky130_fd_sc_hd__and2_1 altered to match.
+Device classes sky130_fd_sc_hd__and2_1 and sky130_fd_sc_hd__and2_1 are equivalent.
+
+...
+
+$ cat ../magic/sky130_fd_sc_hd__and2_1.spice | grep "^.subckt sky130_fd_sc_hd__and2_1"
+.subckt sky130_fd_sc_hd__and2_1 A B VGND VPWR X VNB VPB
+$ cat /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice | grep "^.subckt sky130_fd_sc_hd__and2_1"
+.subckt sky130_fd_sc_hd__and2_1 A B VGND VNB VPB VPWR X
+
+
 ```
   
