@@ -28,23 +28,26 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
 ```tcl
 % extraction do local
 % extract all
-% ext2spice lvs % set sane options
+% ext2spice lvs # set sane options
 % ext2spice
 % 
 % 
 % extract style ngspice()
-% extract style ngspice(si) % use SI units
+% extract style ngspice(si) # use SI units
 %
-% ext2spice cthresh value % 0/infinite ...
-% ext2spice rthresh value % 0/infinite ...
-% ext2spice scale off % ngspice scale
-% ext2spice merge on|off % merge parallel devices
+% ext2spice cthresh value # 0/infinite ...
+% ext2spice rthresh value # 0/infinite ...
+% ext2spice scale off # ngspice scale
+% ext2spice merge on|off # merge parallel devices
+%
+% ext2sim labels on
+% ext2sim # used to extract resistances ...
 %
 % extresists tolerance value
-% extresist all % annotation sto the orig. netlist -> speedup
+% extresist all # annotation to the orig. netlist -> speedup
 % ext2spice extresist on
 %
-% ext2spice -d % distribute areas equally among all devices
+% ext2spice -d # distribute areas equally among all devices
 %
 ```
 
@@ -53,37 +56,37 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
 
 ```tcl
 % gds read file
-% gds readonly true|false % do not modify cells while reading
+% gds readonly true|false # do not modify cells while reading
 %
-% gds flatglob cellname % content of the child cell flatten into parent cell cellname
+% gds flatglob cellname # content of the child cell flatten into parent cell cellname
 %
-% gds flatten true % make magic files smaller -> flatten subcells to represent them in the magic way (planes)
+% gds flatten true # make magic files smaller -> flatten subcells to represent them in the magic way (planes)
 %
-% gds noduplicates true % ignore cell defiitions in gds what is already inthe memory
+% gds noduplicates true # ignore cell defiitions in gds what is already inthe memory
 ```
 
   * Hands on:
 ```tcl
-% gds read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds % read cells
-% lef read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef % read metzadata for gds data, do not owewrite existing cellsm by abstract views
-% readspice /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice % anotate cells by spice netlists (reorder pins)
+% gds read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds # read cells
+% lef read /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef # read metzadata for gds data, do not owewrite existing cellsm by abstract views
+% readspice /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice # anotate cells by spice netlists (reorder pins)
 ```
     
 #### CIF input style (CIF/GDS)
 
 ```tcl
-% cif istyle sky130() % for reading gds written by magic
-% cif istyle sky130(vendor) % for reading gds provided by skywater PDK
+% cif istyle sky130() # for reading gds written by magic
+% cif istyle sky130(vendor) # for reading gds provided by skywater PDK
 %
-% cif style rdlimport % read redistribution layer metal defined by vendor
+% cif style rdlimport # read redistribution layer metal defined by vendor
 ```
 
 ### GDS write
 
 ```tcl
-% gds library true % ignore cell layout hierarchy
-% gds addendum true % ignore readonly cells
-% gds merge true % smaller output, rectangles merged
+% gds library true # ignore cell layout hierarchy
+% gds addendum true # ignore readonly cells
+% gds merge true # smaller output, rectangles merged
 %
 %
 ```
@@ -93,9 +96,9 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
 
 ```tcl
 % cif style gdsii
-% cif style drc  % for drc checks only
-% cif style density  % for scripts: sky130/custom/scripts/check_density.py
-% cif style wafflefill  % include fill patterns: sky130/custom/scripts/generate_fill.py
+% cif style drc  # for drc checks only
+% cif style density  # for scripts: sky130/custom/scripts/check_density.py
+% cif style wafflefill  # include fill patterns: sky130/custom/scripts/generate_fill.py
 ```
 
 ### DRC
@@ -103,9 +106,9 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
 ```tcl
 % drc on
 %
-% drc style full % full check
-% drc style fast % typical
-% drc style routing % metals only
+% drc style full # full check
+% drc style fast # typical
+% drc style routing # metals only
 % 
 % drc check
 % 
@@ -114,6 +117,9 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
   * abstract views - by using abstract views, checks of internals are mostly disabled (faster ...)
   * hierarchy - inside (might be violation), will disappear when connection to top-level layers
 
+```bash
+$ /usr/share/pdk/sky130A/libs.tech/magic/run_standard_drc.py /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/mag/sky130_fd_sc_hd__and2_1.mag 
+```
   
 ### Layout Versus Schematic
   * permuitable inputs
@@ -134,6 +140,19 @@ $ netgen -batch lvs "../magic/inverter.spice inverter" "../xschem/simulations/in
 % load and2_2_alt
 % xor xor_test
 ```
+
+#### Hands on
+
+```tcl
+% load test3
+% flatten -nolabels xor_test
+% # Move one cell
+% xor -nolabels xor_test
+% load xor_test
+% # see the result
+```
+
+
 
 ### Hands on
 
@@ -217,7 +236,17 @@ $ cat ../magic/sky130_fd_sc_hd__and2_1.spice | grep "^.subckt sky130_fd_sc_hd__a
 .subckt sky130_fd_sc_hd__and2_1 A B VGND VPWR X VNB VPB
 $ cat /usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice | grep "^.subckt sky130_fd_sc_hd__and2_1"
 .subckt sky130_fd_sc_hd__and2_1 A B VGND VNB VPB VPWR X
+$
+$ # Missing netgen config ...
+$ cp /usr/share/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl setup.tcl
+$ netgen -batch lvs "../magic/sky130_fd_sc_hd__and2_1.spice sky130_fd_sc_hd__and2_1" "/usr/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice sky130_fd_sc_hd__and2_1"
 
+...
+Circuits match uniquely.
+.
+Logging to file "comp.out" disabled
+LVS Done.
+$ 
 
 ```
   
