@@ -249,4 +249,115 @@ LVS Done.
 $ 
 
 ```
+
+## Day 3
+
+### Manipulations
+
+```tcl
+% # Copy cell to .
+% cellname filepath sky130_fd_sc_hd__dfrtp_2 .
+```
+
+### Electrical check 
+
+```tcl
+% extract do local
+% extract all
+% antennacheck
+Reading extract file.
+Building flattened netlist.
+Running antenna checks.
+antennacheck finished.
+% feedback why
+Antenna error at plane metal2
+% antennacheck debug
+% antennacheck
+Reading extract file.
+Building flattened netlist.
+Running antenna checks.
+Cell: sky130_fd_sc_hd__inv_1_0
+Antenna violation detected at plane metal2
+Effective antenna ratio 888.825 > limit 400
+Gate rect (-14 -842) to (16 -712)
+Antenna rect (238 -8119) to (361 -8072)
+antennacheck finished.
+%
+```
+
+### Checking Density
+
+```tcl
+% cif cover MET1
+% cif cover MET2
+```
+
+```bash
+$ /usr/share/pdk/sky130A/libs.tech/magic/check_density.py exercise_11.gds
+$ # Insert fillers
+$ /usr/share/pdk/sky130A/libs.tech/magic/generate_fill.py exercise_11.mag
+```
+
+```tcl
+% cif cover MET1
+Cell Area = 490000000000 CIF units^2
+Layer Bounding Area = 490000000000 CIF units^2
+Layer Total Area = 27599406000 CIF units^2
+Coverage in cell = 5.6%
+% 
+% cif ostyle density
+CIF output style is now "density"
+% cif cover MET1
+CIF name "MET1" doesn't exist in style "density".
+The valid CIF layer names are: fom_all, poly_all, li_all, m1_all, m2_all, m3_all, m4_all, m5_all.
+% cif cover m1_all
+Cell Area = 19600000000 CIF units^2
+Layer Bounding Area = 19600000000 CIF units^2
+Layer Total Area = 11388231920 CIF units^2
+Coverage in cell = 58.1%
+% cif cover m2_all
+Cell Area = 19600000000 CIF units^2
+Layer Bounding Area = 19327817400 CIF units^2
+Layer Total Area = 18069907840 CIF units^2
+Coverage in cell = 92.2%
+% 
+```
+
+## Day 4
+
+  * OpenLane is mostly covered by [Advanced-Physical-Design-using-OpenLANE](https://github.com/belohoub/Advanced-Physical-Design-using-OpenLANE) workshop, additional notes below
   
+```bash
+OpenLANE$ write_powered_verilog # to write netlist of routed design
+OpenLANE$ set_netlist $::env(lvs_result_file_tag).powered.v # set variable pointing to extracted netlist for LVS
+OpenLANE$ # gen GDSses
+OpenLANE$ run_magic
+OpenLANE$ run_klayout
+OpenLANE$ run_klayout_gds_xor # XOR GDSes by klayout and magic
+OpenLANE$ run_magic_spice_export # SPICE netlist extraction
+OpenLANE$ run_lvs
+OpenLANE$ run_magic_drc
+OpenLANE$ run_antenna_check
+OpenLANE$ run_lef_cvdc # circuit validity check
+OpenLANE$ generate_final_summary_report
+OpenLANE$ 
+OpenLANE$ 
+```
+
+  * exclude cells - known problematic cells in OpenLane:
+  
+```bash
+$ find /usr/share/pdk/sky130A/libs.tech/openlane/ | grep exclude
+/usr/share/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_ls/drc_exclude.cells
+/usr/share/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/drc_exclude.cells
+/usr/share/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hdll/drc_exclude.cells
+/usr/share/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hs/drc_exclude.cells
+/usr/share/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_ms/drc_exclude.cells
+
+  * change config.tcl parameters to help the automated flow to complete without errors
+  * CTRL+Z -> zoom to bounding box
+```
+
+## Day 5
+
+  * only presentations completed up to now, labs are TBD.
