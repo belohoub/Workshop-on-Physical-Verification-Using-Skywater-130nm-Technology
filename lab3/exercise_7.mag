@@ -1,0 +1,81 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1665684255
+<< nmos >>
+rect 3117 -901 3346 -637
+<< ndiff >>
+rect 3117 -637 3346 -502
+rect 3117 -1025 3346 -901
+<< psubdiff >>
+rect 3114 -1173 3340 -1144
+rect 3114 -1231 3137 -1173
+rect 3319 -1231 3340 -1173
+rect 3114 -1257 3340 -1231
+<< psubdiffcont >>
+rect 3137 -1231 3319 -1173
+<< poly >>
+rect 3048 -901 3117 -637
+rect 3346 -901 3416 -637
+<< locali >>
+rect 1007 -502 1213 -500
+rect 778 -713 1213 -502
+rect 778 -1098 1212 -713
+rect 3114 -1173 3340 -1144
+rect 3114 -1231 3137 -1173
+rect 3319 -1231 3340 -1173
+rect 3114 -1257 3340 -1231
+<< metal1 >>
+rect -251 -244 -176 -220
+tri -176 -244 -152 -220 sw
+tri -151 -244 -127 -220 se
+rect -127 -244 -52 -220
+rect -251 -277 -52 -244
+rect 2098 -688 2333 -488
+tri 2333 -688 2533 -488 sw
+rect 2098 -1084 2533 -688
+<< metal2 >>
+rect 4538 -300 4605 -288
+rect 4526 -658 4538 -591
+rect 4896 -658 4907 -591
+rect 4538 -669 4605 -658
+<< via2 >>
+rect 4538 -591 4605 -300
+rect 4538 -658 4896 -591
+<< metal3 >>
+rect 4533 -300 4610 -288
+rect 4533 -586 4538 -300
+rect 4526 -658 4538 -586
+rect 4605 -586 4610 -300
+rect 4605 -591 4907 -586
+rect 4896 -658 4907 -591
+rect 4526 -663 4907 -658
+rect 4533 -669 4610 -663
+use angled  angled_0
+timestamp 1624217116
+transform 1 0 -19 0 1 50
+box -506 -1126 -71 -529
+use angled  angled_1
+timestamp 1624217116
+transform -1 0 -309 0 1 50
+box -506 -1126 -71 -529
+use via_b  via_b_0
+timestamp 1624217737
+transform -1 0 8363 0 1 -225
+box 4025 -877 4406 -800
+use via_b  via_b_1
+timestamp 1624217737
+transform 1 0 222 0 1 -225
+box 4025 -877 4406 -800
+<< labels >>
+flabel space -306 -30 -306 -30 0 FreeSans 320 0 0 0 Exercise_7a
+flabel space -304 -116 -304 -116 0 FreeSans 320 0 0 0 Off-grid_error
+flabel space 959 -46 959 -46 0 FreeSans 320 0 0 0 Exercise_7b
+flabel space 931 -140 931 -140 0 FreeSans 320 0 0 0 Angle_error
+flabel space 2286 -37 2286 -37 0 FreeSans 320 0 0 0 Exercise_7c
+flabel space 2259 -151 2259 -151 0 FreeSans 320 0 0 0 Angle_error
+flabel space 3214 -64 3214 -64 0 FreeSans 320 0 0 0 Exercise_7d
+flabel space 3210 -151 3210 -151 0 FreeSans 320 0 0 0 Overlap_rule
+flabel space 4195 -143 4195 -143 0 FreeSans 320 0 0 0 Overlap_rule
+flabel space 4199 -56 4199 -56 0 FreeSans 320 0 0 0 Exercise_7e
+<< end >>
